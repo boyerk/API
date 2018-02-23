@@ -38,6 +38,8 @@ function draw() {
 
     background(50);
     image(cryptopic, 0, 0, width, height);
+    fill(50, 100);
+    rect(0, 0, width, height);
     fill(255);
 
     for (var i = 0; i <= kryptoData.tradable_pairs.length - 30; i += 1) {
@@ -49,7 +51,7 @@ function draw() {
         stroke(0);
         textSize(18);
         text(currency.pair.base.name + " " + currency.pair.base.code, x, y);
-        stroke(0, 255, 0);
+        stroke(255, 131, 0);
         strokeWeight(5);
         let valueUSD = 350;
         if (currency.last_ask > 1000 && currency.last_ask < 3000) {
@@ -74,13 +76,14 @@ function draw() {
             valueUSD = 10;
             stroke(255, 0, 0);
         } else if (currency.last_ask > 10000 && currency.last_ask < 100000) {
-            stroke(255, 131, 0);
+            //stroke(255, 131, 0);
+            stroke(255, 255, 0);
             valueUSD = 650;
             print("orange");
         } else if (currency.last_ask > 100000) {
-            print("yellow");
+            print("green");
             valueUSD = 650;
-            stroke(255, 255, 0);
+            stroke(0, 255, 0);
         }
 
         line(x, y + 5, x + valueUSD + k, y + 5);
@@ -98,7 +101,7 @@ function draw() {
         textSize(18);
         text(currencyRest.pair.base.name + " " + currencyRest.pair.base.code, x2, y2);
         print(currencyRest.last_ask);
-        stroke(0, 255, 0);
+        stroke(255, 131, 0);
         strokeWeight(5);
         let moneyVal = 350;
         if (currencyRest.last_ask > 1000 && currencyRest.last_ask < 3000) {
@@ -126,10 +129,10 @@ function draw() {
             print("should be red");
             //print(currencyRest.last_ask);
         } else if (currencyRest.last_ask > 10000 && currencyRest.last_ask < 100000) {
-            stroke(255, 131, 0);
+            stroke(255, 255, 0);
             moneyVal = 650;
         } else if (currencyRest.last_ask > 100000) {
-            stroke(255, 255, 0);
+            stroke(0, 255, 0);
             moneyVal = 750;
         }
 
@@ -145,21 +148,21 @@ function draw() {
 
     }
     if (state == "MovingRight") {
-        k += 1;
+        k += .2;
         if (k > 100) {
             state = "MovingLeft";
         }
     } else if (state == "MovingLeft") {
-        k -= 1;
+        k -= .2;
         if (k < 20) {
             state = "MovingRight";
         }
     }
     textSize(24);
     textFont("monospace");
-    text("Crypto Currency Values Every Hour", 600, 20);
+    text("Crypto Currency Trade Values Every Hour", 610, 20);
     stroke(255);
-    line(600, 25, 1080, 25);
+    line(600, 25, 1180, 25);
 
     //console.log(kryptoData.tradable_pairs[60].last_ask);
 }

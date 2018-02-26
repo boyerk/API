@@ -20,7 +20,7 @@ function currencyRecieved(krypto) {
 }
 
 function setup() {
-    createCanvas(1920, 1080);
+    createCanvas(1920, 1680);
     //noLoop();
     //console.log(kryptoData.tradable_pairs.length);
     //console.log(kryptoData.tradable_pairs[0].pair.name);
